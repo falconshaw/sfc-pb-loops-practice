@@ -18,7 +18,10 @@ row_length = [2, 5, 10]
 # Make an empty print statement inside the for loop.
 # Use another for loop to iterate through the corresponding row_length list.
 # Inside the nested for loop, print the character at the current outer index.
-
+for i, char in enumerate(characters):
+    print()
+    for _ in range(row_length[i]):
+        print(char, end="")
 
 # ------------------------------ Image 2 ------------------------------
 print("\n")
@@ -39,7 +42,14 @@ row_length = [2, 5, 10]
 # Inside the nested while loop, print the character at the current outer index.
 # Inside the nested while loop, increment the inner counter.
 # Outside the nested while loop, increment the outer counter.
-
+count = 0
+while count < len(characters):
+    print()
+    inner_count = 0
+    while inner_count < row_length[count]:
+        print(characters[count], end = "")
+        inner_count += 1
+    count += 1
 
 # ------------------------------ Image 3 ------------------------------
 print("\n")
@@ -47,9 +57,23 @@ print("Image 3: User Input Custom Stickers")
 # Use the variables and pseudocode below to make stickers based on user input:
 
 # A user session might look like:
+count = 1
+characters = []
+row_lengths = []
+num_rows = int(input("Enter the number of rows: "))
 
-# Enter the number of the columns: 5
-# Enter the character for row 1: M
+while count <= num_rows:
+    char = input(f"Enter the character for row {count}: ")
+    length = int(input(f"Enter the number of characters for row {count}: "))
+    characters.append(char)
+    row_lengths.append(length)
+    count += 1
+
+for row_index in range(num_rows):
+    for _ in range(row_lengths[row_index]):
+        print(characters[row_index], end="")
+    print()
+
 # Enter the number of characters in row 1: 10
 # Enter the character for row 2: xo
 # Enter the number of characters in row 2: 5
@@ -66,8 +90,26 @@ print("Image 3: User Input Custom Stickers")
 # WWWWWWWWWW
 # Enter y to make another sticker:
 
-go_again = "y"
+go_again = input("Enter y to make another sticker: ").lower()
 
+while go_again == 'y':
+    count = 1
+    characters = []
+    row_lengths = []
+    num_rows = int(input("Enter the number of rows: "))
+
+    while count <= num_rows:
+        char = input(f"Enter the character for row {count}: ")
+        length = int(input(f"Enter the number of characters for row {count}: "))
+        characters.append(char)
+        row_lengths.append(length)
+        count += 1
+
+    for row_index in range(num_rows):
+        for _ in range(row_lengths[row_index]):
+            print(characters[row_index], end="")
+        print()
+print ("See you next time!")
 
 # * Create a while loop that will run as long as go_again is "y".
 #   * Create an empty list called chars.
